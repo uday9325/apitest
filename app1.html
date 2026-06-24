@@ -1,0 +1,165 @@
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+    overflow:hidden;
+}
+
+/* Background glow effects */
+body::before,
+body::after{
+    content:'';
+    position:absolute;
+    border-radius:50%;
+    filter:blur(80px);
+    z-index:-1;
+}
+
+body::before{
+    width:300px;
+    height:300px;
+    background:#60a5fa;
+    top:-100px;
+    left:-100px;
+}
+
+body::after{
+    width:350px;
+    height:350px;
+    background:#9333ea;
+    bottom:-100px;
+    right:-100px;
+}
+
+.container{
+    background:rgba(255,255,255,0.12);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.2);
+    padding:40px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.35);
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-10px);
+    }
+}
+
+h1{
+    color:white;
+    font-size:2rem;
+    margin-bottom:20px;
+    letter-spacing:1px;
+}
+
+h2{
+    font-size:5rem;
+    color:white;
+    margin-bottom:30px;
+    text-shadow:0 0 20px rgba(255,255,255,0.5);
+}
+
+div{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+button{
+    border:none;
+    padding:14px 28px;
+    font-size:1rem;
+    font-weight:600;
+    border-radius:12px;
+    cursor:pointer;
+    color:white;
+    transition:all 0.3s ease;
+    box-shadow:0 5px 15px rgba(0,0,0,0.25);
+}
+
+button:first-child{
+    background:linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+button:nth-child(2){
+    background:linear-gradient(135deg,#f59e0b,#ea580c);
+}
+
+button:last-child{
+    background:linear-gradient(135deg,#ef4444,#dc2626);
+}
+
+button:hover{
+    transform:translateY(-5px) scale(1.05);
+    box-shadow:0 10px 25px rgba(0,0,0,0.35);
+}
+
+button:active{
+    transform:scale(0.95);
+}
+</style>
+</head>
+
+<body>
+    <div class="container">
+    <h1>Count App</h1>
+
+    <h2 id="countId">0</h2>
+
+    <div>
+        <button onclick="inc()">+</button>
+        <button onclick="reset()">RESET</button>
+        <button onclick="dec()">-</button>
+    </div>
+</div>
+    
+    <script>
+    let count = 0;
+
+    function update(){
+        document.getElementById("countId").innerText = count;
+    }
+
+    function inc(){
+        count++;
+        update()
+    }
+
+    function dec(){
+        count--;
+        update()
+    }
+
+    function  reset(){
+        count = 0;
+        update()
+    }
+
+
+
+</script>
+</body>
+</html>
